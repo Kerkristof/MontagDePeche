@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+  <div class="row">
+    {% for espece in especes %}
+      <div class="col-3">
+        <div class="card">
+          <img src="{{ asset('assets/images/especes/' ~ espece.imageName) }}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ espece.nom }}</h5>
+            <small><i>La maille est de {{espece.maille}} cm</i></small>
+            <p class="card-text">{{ espece.contenu }}</p>
+            <a href="{{ path('montage_index', {'espece_id' : espece.id })}}">Voir les montages</a>
+            <div class="row">
+              <a href="{{ path('espece_update', {'id' : espece.id})}}" class="btn btn-primary">Modifier</a>
+              <a href="{{ path('espece_delete', {'id' : espece.id})}}" class="btn btn-danger">Supprimer</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <hr>
+  <a href="{{ path('espece_create') }}" class="btn btn-success">Ajouter une nouvelle espèce</a>
+
+{% endblock %}

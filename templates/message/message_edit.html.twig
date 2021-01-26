@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{{ form_start(formMessage) }}
+  {{ form_row(formMessage.titre, {'label' : 'Titre du message', 'attr' : { 'placeholder' : 'Titre ...', 'class' : 'form-control'}} )}}
+  <br>
+  {{ form_row(formMessage.contenu, {'label' : 'Description', 'attr' : {'class' : 'form-control'}} )}}
+  <br>
+  {{ form_row(formMessage.statut, {'label' : 'Statut actif'} )}}
+  <button type="submit" class="btn btn-success">
+    {% if editMode %}
+      Enregistrer les modifications
+    {% else %}
+      Ajouter le message
+    {% endif %}
+  </button>
+{{ form_end(formMessage) }}
+
+
+
+
+
+{% endblock %}

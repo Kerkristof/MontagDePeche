@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MessageController!{% endblock %}
+
+{% block body %}
+
+  <table class="table">
+    <tr>
+      <th>Date d'éditon</th>
+      <th>Titre</th>
+      <th>Contenu</th>
+      <th>Statut</th>
+      <th>Modifier</th>
+      <th>Supprimer</th>
+    </tr>
+    {% for msg in messages %}
+      <tr>
+        <td>{{ msg.createdAt | date('d/m/Y à H:i') }}</td>
+        <td>{{ msg.titre }}</td>
+        <td>{{ msg.contenu }}</td>
+        {% if msg.statut == true %}
+          <td><strong>Actif</strong></td>
+        {% else %}
+        <td>Inactif</td>
+        {% endif %}
+        <td> <a href="{{ path('message_update', {'id' : msg.id} ) }}" class="btn btn-primary">Modifier</a></td>
+        <td> <a href="{{ path('message_delete', {'id' : msg.id} ) }}" class="btn btn-warning">Supprimer</a></td>
+      </tr>
+    {% endfor %}
+  </table>
+  <a href="{{ path('message_create') }}" class="btn btn-success">Ajouter un message</a>
+
+{% endblock %}

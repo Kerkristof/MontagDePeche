@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  {{ form_start(formEspece) }}
+
+    {{ form_row(formEspece.nom, {'label' : 'Nom de l\'espèce', 'attr' : { 'placeholder' : 'Nom ...', 'class' : 'form-control'}} )}}
+    <br>
+    {{ form_row(formEspece.maille, {'label' : 'Taille minimale de prélèvement en cm', 'attr' : { 'class' : 'form-control' }} )}}
+    <br>
+    {{ form_row(formEspece.contenu, {'label' : 'Description', 'attr' : {'class' : 'form-control'}} )}}
+    <br>
+    {{ form_row(formEspece.imageFile, { 'label' :'Image', 'attr' : { 'class':'form-control'}}) }}
+    <br>
+    <button type="submit" class="btn btn-success">
+      {% if editMode %}
+        Enregistrer les modifications
+      {% else %}
+        Ajouter le montage
+      {% endif %}
+    </button>
+
+  {{ form_end(formEspece) }}
+{% endblock %}

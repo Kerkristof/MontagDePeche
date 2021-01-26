@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <h4>{{ montage.nom }}</h4>
+  <p>Associer une espèce</p>
+
+  <table class="table">
+    <tr>
+      <th>Nom de l'espèce</th>
+      <th>Action</th>
+    </tr>
+    {% for espece in link_especes %}
+      <tr>
+        <td>{{ espece.nom }}</td>
+        <td> <a href="{{ path('unlink_espece', {'id' : montage.id, 'espece_id' : espece.id  }) }}" class="btn btn-primary">Dissocier</a> </td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <table class="table">
+    <tr>
+      <th>Nom de l'espèce</th>
+      <th>Action</th>
+    </tr>
+    {% for espece in unlink_especes %}
+      <tr>
+        <td>{{ espece.nom }}</td>
+        <td> <a href="{{ path('link_espece', {'id' : montage.id, 'espece_id' : espece.id }) }}" class="btn btn-warning">Associer</a> </td>
+      </tr>
+    {% endfor %}
+  </table>
+
+{% endblock %}

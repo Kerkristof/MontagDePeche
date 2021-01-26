@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <h3>Page d'édition de montage</h3>
+  {{ form_start(formMontage) }}
+
+    {{ form_row(formMontage.nom, {'label' : 'Nom du montage', 'attr' : { 'placeholder' : 'Nom ...', 'class' : 'form-control'}} )}}
+    <br>
+    {{ form_row(formMontage.contenu, {'label' : 'Description', 'attr' : {'class' : 'form-control'}} )}}
+    <br>
+    {{ form_row(formMontage.imageFile, { 'label' :"Image", 'attr' : {'class':'form-control'}}) }}
+    <br>
+    <button type="submit" class="btn btn-success">
+      {% if editMode %}
+        Enregistrer les modifications
+      {% else %}
+        Ajouter le montage
+      {% endif %}
+    </button>
+
+  {{ form_end(formMontage) }}
+
+
+{% endblock %}

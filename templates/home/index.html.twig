@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+  {% for msg in messages %}
+        <h3>{{ msg.titre }}</h3>
+        <p><i>Edité le {{ msg.createdAt | date('d/m/Y à H:i') }}</i></p>
+        <p>{{ msg.contenu }}</p>
+        <hr>
+  {% endfor %}
+{% endblock %}

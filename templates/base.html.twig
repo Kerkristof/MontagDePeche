@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('assets/css/master.css') }}">
+    </head>
+    <body>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+        <a class="navbar-brand" href="{{ path('home') }}">Le surf casting</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor03">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path('espece_index')}}">Les espèces <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path('message_index') }}">Les messages</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path('montage_index') }}">Les montages</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container">
+        {% block body %}{% endblock %}
+      </div>
+        <script type="text/javascript" src="{{ asset('assets/js/master.js') }}"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

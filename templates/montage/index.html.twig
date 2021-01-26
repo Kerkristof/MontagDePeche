@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MontageController!{% endblock %}
+
+{% block body %}
+  <div class="row">
+    {% for montage in montages %}
+        <div class="col-4">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">{{ montage.nom }}</h4>
+            </div>
+            <img onclick="changeSize(this)" src="{{asset('assets/images/montages/' ~ montage.imageName)}}" class="card-img">
+            <div class="card-body">
+              <p class="card-text">{{ montage.contenu }}</p>
+              <a href="{{ path('link_espece', {'id' : montage.id }) }}">Associer une espèce</a>
+              <br>
+              <a href="{{ path('montage_update', {'id' : montage.id }) }}" class="btn btn-primary">Modifier</a>
+              <a href="{{ path('montage_delete', {'id' : montage.id }) }}" class="btn btn-danger">Supprimer</a>
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+  </div>
+  <hr>
+  <a href="{{ path('montage_create') }}" class="btn btn-success">Ajouter un nouveau montage</a>
+{% endblock %}
